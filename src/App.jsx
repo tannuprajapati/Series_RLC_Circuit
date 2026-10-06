@@ -582,9 +582,7 @@ const App = () => {
       setReportGenerated(false)
 
       setStatus(
-        setStatus(
-          `Frequency set to ${value.toFixed(1)} kHz.`,
-        ),
+        `Frequency set to ${value.toFixed(1)} kHz.`,
       )
     },
     [generatorOn],
@@ -1426,173 +1424,27 @@ const App = () => {
               <section className="right-panel">
 
                 <ConnectionLab
-                  key={`connection-lab-${resetRequest}`}
+                  autoConnectRequest={autoConnectRequest}
+                  checkRequest={checkRequest}
+                  resetRequest={resetRequest}
+                  connectionsVerified={connectionsVerified}
+                  mcbOn={mcbOn}
+                  generatorOn={generatorOn}
 
-                  ammeterRemovalRequired={
-                    ammeterRemovalRequired
-                  }
+                  frequency={frequency}
+                  onFrequencyChange={handleFrequencyChange}
 
-                  autoConnectRequest={
-                    autoConnectRequest
-                  }
+                  highlightedTerminalIds={highlightedTerminalIds}
 
-                  bulbSwitchOn={
-                    bulbSwitchOn
-                  }
+                  meterCurrentAmperes={currentReading.current}
+                  meterVoltage={voltage}
 
-                  case1ConnectionsRemoved={
-                    case1ConnectionsRemoved
-                  }
-
-                  case2ConnectionsRemoved={
-                    case2ConnectionsRemoved
-                  }
-
-                  checkRequest={
-                    checkRequest
-                  }
-
-                  circuitSwitchOn={
-                    circuitSwitchOn
-                  }
-
-                  connectionsVerified={
-                    connectionsVerified
-                  }
-
-                  experimentCase={
-                    experimentCase
-                  }
-
-                  highlightedTerminalIds={
-                    highlightedTerminalIds
-                  }
-
-                  meterCurrentAmperes={
-                    currentReading.current
-                  }
-
-                  meterVoltage={
-                    voltage
-                  }
-
-                  observationIl={
-                    currentReading.current
-                  }
-
-                  observationVth={
-                    voltage
-                  }
-
-                  powerOn={
-                    powerOn
-                  }
-
-                  resetRequest={
-                    resetRequest
-                  }
-
-                  resistancesConfigured={
-                    true
-                  }
-
-                  rl={
-                    frequency
-                  }
-
-                  scale={
-                    scale
-                  }
-
-                  r1={
-                    RLC_VALUES.resistance
-                  }
-
-                  r2={0}
-
-                  r3={0}
-
-                  voltage={
-                    voltage
-                  }
-
-                  voltageLocked={
-                    false
-                  }
-
-                  mcbOn={
-                    mcbOn
-                  }
-
-                  generatorOn={
-                    generatorOn
-                  }
-
-                  onToggleMcb={
-                    handleToggleMcb
-                  }
-
-                  onToggleGenerator={
-                    handleToggleGenerator
-                  }
-
-                  onConnectionStateChange={
-                    handleConnectionStateChange
-                  }
-
-                  onAmmeterConnectionsRemoved={
-                    handleAmmeterConnectionsRemoved
-                  }
-
-                  onAutoConnectCompleted={
-                    handleAutoConnectCompleted
-                  }
-
-                  onBulbSwitchToggle={
-                    handleBulbSwitchToggle
-                  }
-
-                  onCheckConnections={
-                    handleCheckConnections
-                  }
-
-                  onCircuitSwitchChange={
-                    handleCircuitSwitchChange
-                  }
-
-                  onCircuitSwitchRejected={
-                    handleCircuitSwitchRejected
-                  }
-
-                  onGuideEvent={
-                    notifyGuide
-                  }
-
-                  setCase1ConnectionsRemoved={
-                    setCase1ConnectionsRemoved
-                  }
-
-                  setCase2ConnectionsRemoved={
-                    setCase2ConnectionsRemoved
-                  }
-
-                  setShowMultimeter={
-                    setShowMultimeter
-                  }
-
-                  setShowRth={
-                    setShowRth
-                  }
-
-                  setVoltage={
-                    handleVoltageChange
-                  }
-
-                  onVoltageSet={
-                    handleVoltageSet
-                  }
+                  onAutoConnectCompleted={handleAutoConnectCompleted}
+                  onCheckConnections={handleCheckConnections}
+                  onGuideEvent={notifyGuide}
+                  onToggleMcb={handleToggleMcb}
+                  onToggleGenerator={handleToggleGenerator}
                 />
-
               </section>
             </section>
           </main>

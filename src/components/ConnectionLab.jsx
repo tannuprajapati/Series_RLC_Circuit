@@ -36,7 +36,7 @@ const isRequiredConnection = (connection) => {
  * Terminal IDs used by the ammeter.
  *
  * Kept here only for identifying the meter terminals.
- * There is no longer any special Thevenin/ammmeter-removal workflow.
+ * There is no longer any special Thevenin/ammeter-removal workflow.
  */
 const AMMETER_TERMINAL_IDS = [
   '5-endpoint',
@@ -52,6 +52,15 @@ const ConnectionLab = ({
 
   mcbOn = false,
   generatorOn = false,
+
+  /*
+   * RLC frequency.
+   *
+   * These two props are important because the frequency slider
+   * lives inside FunctionGenerator.
+   */
+  frequency = 1.0,
+  onFrequencyChange,
 
   highlightedTerminalIds = [],
 
@@ -70,8 +79,14 @@ const ConnectionLab = ({
   const containerRef = useRef(null)
   const instanceRef = useRef(null)
 
-  const onAutoConnectCompletedRef = useRef(onAutoConnectCompleted)
-  const onCheckConnectionsRef = useRef(onCheckConnections)
+  const onAutoConnectCompletedRef = useRef(
+    onAutoConnectCompleted,
+  )
+
+  const onCheckConnectionsRef = useRef(
+    onCheckConnections,
+  )
+
   const onGuideEventRef = useRef(onGuideEvent)
 
   const scaleRef = useRef(getJsPlumbZoom(scale))
@@ -80,17 +95,20 @@ const ConnectionLab = ({
   const lastAutoConnectRequestRef = useRef(0)
 
   const [isLocked, setIsLocked] = useState(false)
-  const [connectedTerminalIds, setConnectedTerminalIds] = useState([])
+  const [connectedTerminalIds, setConnectedTerminalIds] =
+    useState([])
 
   /*
    * Keep callback references current.
    */
   useEffect(() => {
-    onAutoConnectCompletedRef.current = onAutoConnectCompleted
+    onAutoConnectCompletedRef.current =
+      onAutoConnectCompleted
   }, [onAutoConnectCompleted])
 
   useEffect(() => {
-    onCheckConnectionsRef.current = onCheckConnections
+    onCheckConnectionsRef.current =
+      onCheckConnections
   }, [onCheckConnections])
 
   useEffect(() => {
@@ -159,7 +177,7 @@ const ConnectionLab = ({
       instanceRef.current?.reset()
 
       containerRef.current.classList.remove(
-        'connection-lab--locked'
+        'connection-lab--locked',
       )
 
       setIsLocked(false)
@@ -429,7 +447,7 @@ const ConnectionLab = ({
    */
   const handleLabelClick = (event) => {
     const label = event.target.closest(
-      '.terminal-number-label'
+      '.terminal-number-label',
     )
 
     if (
@@ -445,7 +463,7 @@ const ConnectionLab = ({
     if (
       isLocked ||
       containerRef.current.classList.contains(
-        'connection-lab--locked'
+        'connection-lab--locked',
       )
     ) {
       return
@@ -505,7 +523,8 @@ const ConnectionLab = ({
   useEffect(() => {
     if (
       autoConnectRequest === 0 ||
-      autoConnectRequest === lastAutoConnectRequestRef.current ||
+      autoConnectRequest ===
+        lastAutoConnectRequestRef.current ||
       !instanceRef.current
     ) {
       return
@@ -575,7 +594,7 @@ const ConnectionLab = ({
 
     if (containerRef.current) {
       containerRef.current.classList.remove(
-        'connection-lab--locked'
+        'connection-lab--locked',
       )
     }
   }, [resetRequest])
@@ -584,16 +603,21 @@ const ConnectionLab = ({
    * Determine whether the component has the complete
    * required RLC topology.
    */
-  const requiredTerminalIds = REQUIRED_CONNECTION_PAIRS.flat()
+  const requiredTerminalIds =
+    REQUIRED_CONNECTION_PAIRS.flat()
 
   const allRequiredTerminalsConnected =
     requiredTerminalIds.every(
       (terminalId) =>
-        connectedTerminalIds.includes(terminalId)
+        connectedTerminalIds.includes(terminalId),
     )
 
   /*
-   * The equipment panel receives only RLC-specific props.
+   * The equipment panel receives the RLC-specific props.
+   *
+   * IMPORTANT:
+   * frequency and onFrequencyChange are passed here so
+   * the Function Generator slider can update App.jsx state.
    */
   return (
     <div
@@ -604,19 +628,38 @@ const ConnectionLab = ({
       <EquipmentPanel
         mcbOn={mcbOn}
         generatorOn={generatorOn}
-        connectedTerminalIds={connectedTerminalIds}
-        highlightedTerminalIds={highlightedTerminalIds}
-        meterCurrentAmperes={meterCurrentAmperes}
+
+        /*
+         * RLC frequency slider props
+         */
+        frequency={frequency}
+        onFrequencyChange={onFrequencyChange}
+
+        connectedTerminalIds={
+          connectedTerminalIds
+        }
+
+        highlightedTerminalIds={
+          highlightedTerminalIds
+        }
+
+        meterCurrentAmperes={
+          meterCurrentAmperes
+        }
+
         meterVoltage={meterVoltage}
+
         onToggleMcb={onToggleMcb}
-        onToggleGenerator={onToggleGenerator}
+        onToggleGenerator={
+          onToggleGenerator
+        }
       />
 
       {/*
-        Keep these values available for future UI/guide
-        integrations without bringing back the old
-        Thevenin circuit diagram.
-      */}
+       * Keep these values available for future UI/guide
+       * integrations without bringing back the old
+       * Thevenin circuit diagram.
+       */}
       <span
         className="sr-only"
         data-required-connections-complete={

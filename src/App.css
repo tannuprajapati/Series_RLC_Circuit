@@ -441,7 +441,7 @@
   padding: 0;
 }
 
-.action-instructions-panel__substeps > li > ul {
+.action-instructions-panel__substeps>li>ul {
   display: grid;
   gap: 2.4px;
   margin: 4.8px 0 0;
@@ -449,11 +449,11 @@
   list-style: disc outside;
 }
 
-.action-instructions-panel__substeps > li > ul > li {
+.action-instructions-panel__substeps>li>ul>li {
   padding-left: 1.6px;
 }
 
-.action-instructions-panel__substeps > li > ul > li::marker {
+.action-instructions-panel__substeps>li>ul>li::marker {
   color: #8d521f;
   font-size: 0.9em;
 }
@@ -704,16 +704,18 @@
     linear-gradient(110deg, rgba(255, 255, 255, 0.42), transparent 26%),
     linear-gradient(180deg, transparent 52%, rgba(83, 54, 30, 0.1));
 }
+
 /* =========================
    MCB
 ========================= */
 
 .equipment-panel__mcb {
-   position: relative;
-   top:40px;
-   left:20px;
- 
+  position: relative;
+  top: 40px;
+  left: 20px;
+
 }
+
 /* MCB image */
 
 .mcb__button {
@@ -735,6 +737,7 @@
 
   z-index: 5;
 }
+
 .mcb__image {
   display: block;
 
@@ -762,7 +765,7 @@
   left: 42px;
   width: 48px;
   height: 16px;
-    font-size: 13px;
+  font-size: 13px;
 
 }
 
@@ -771,7 +774,7 @@
   left: 30px;
   width: 72px;
   height: 16px;
-    font-size: 13px;
+  font-size: 13px;
 
 }
 
@@ -780,7 +783,7 @@
   left: 201px;
   width: 80px;
   height: 36px;
-    font-size: 13px;
+  font-size: 13px;
 
 }
 
@@ -1076,7 +1079,7 @@
   transform-origin: center top;
   transform: scale(1);
   filter: none;
-  
+
 }
 
 /* Normalize each artwork's transparent margins to an exact 160 × 208 px body. */
@@ -1118,18 +1121,19 @@
   width: 156px;
   height: 204px;
   flex: 0 0 168px;
-   left: 24px;
+  left: 24px;
 }
 
 .ammeter--multimeter .ammeter__image {
   width: 156px;
   height: 204px;
 }
+
 .multimeter-knob {
   position: absolute;
 
   top: 62.4px;
-  left:25.6px;
+  left: 25.6px;
 
   width: 101.6px;
   height: 85.6px;
@@ -1151,6 +1155,7 @@
   transform-origin: center center;
   transition: transform 0.4s ease;
 }
+
 .multimeter-display {
   position: absolute;
 
@@ -1173,8 +1178,8 @@
   color: #ff2b2b;
 
   text-shadow:
-    0 0 3.2px rgba(255,0,0,0.7),
-    0 0 6.4px rgba(255,0,0,0.4);
+    0 0 3.2px rgba(255, 0, 0, 0.7),
+    0 0 6.4px rgba(255, 0, 0, 0.4);
 
   letter-spacing: 0;
 
@@ -1240,10 +1245,12 @@
   text-align: center;
   transform: translateX(-50%);
 }
+
 .ammeter--voltmeter,
 .ammeter--A1 {
   margin-top: -16px;
 }
+
 .circuit-workspace {
   position: relative;
   width: 676px;
@@ -1252,6 +1259,7 @@
   background: #241812;
   overflow: hidden;
 }
+
 .circuit-panel {
   position: absolute;
   left: 18px;
@@ -1259,12 +1267,14 @@
   width: 640px;
   height: 360px;
 }
+
 .circuit-power-supply {
   position: absolute;
-  left:-12px;
+  left: -12px;
   top: 88px;
   z-index: 5;
 }
+
 .circuit-panel__title {
   position: absolute;
   top: 17.6px;
@@ -1377,6 +1387,7 @@
 
   overflow: visible;
 }
+
 .graph-panel::before {
   position: absolute;
   inset: 6.4px;
@@ -1417,7 +1428,7 @@
   position: relative;
   z-index: 1;
   margin: 4.8px 19.2px 19.2px;
-  overflow:visible;
+  overflow: visible;
   border: 0.8px solid rgba(96, 61, 35, 0.24);
   border-radius: 8px;
   background:
@@ -1425,8 +1436,9 @@
   box-shadow:
     inset 0 0.8px 0 rgba(255, 255, 255, 0.92),
     0 6.4px 14.4px rgba(60, 32, 10, 0.1);
-    
+
 }
+
 .report-button {
 
   display: inline-flex;
@@ -1479,6 +1491,7 @@
   filter: grayscale(0.18) brightness(0.82);
   transform: none;
 }
+
 .status-bar {
   position: absolute;
   top: 643.2px;
@@ -1520,6 +1533,7 @@ input:focus-visible {
   outline: 2.4px solid rgba(49, 137, 255, 0.75);
   outline-offset: 2.4px;
 }
+
 .connection-lab {
   position: relative;
   display: flex;
@@ -1528,44 +1542,45 @@ input:focus-visible {
   flex-direction: column;
   gap: 14.4px;
 }
-.graph-panel__body{
-  padding:19.2px;
+
+.graph-panel__body {
+  padding: 19.2px;
 }
 
-.calculation-values{
-  margin-bottom:22.4px;
+.calculation-values {
+  margin-bottom: 22.4px;
 }
 
-.results-section{
-  margin-top:9.6px;
+.results-section {
+  margin-top: 9.6px;
 }
 
-.verification-section{
-  margin-top:19.2px;
+.verification-section {
+  margin-top: 19.2px;
 }
-.verify-btn{
-  width:144px;
-  height:41.6px;
 
-  border:none;
-  border-radius:799.2px;
+.verify-btn {
+  width: 144px;
+  height: 41.6px;
+
+  border: none;
+  border-radius: 799.2px;
 
   background:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       #48d17d,
-      #1f9f57
-    );
+      #1f9f57);
 
-  color:white;
+  color: white;
 
-  font-size:14.4px;
-  font-weight:800;
+  font-size: 14.4px;
+  font-weight: 800;
 
   box-shadow:
-    inset 0 1.6px 1.6px rgba(255,255,255,0.35),
-    0 3.2px 8px rgba(37,22,13,0.25);
+    inset 0 1.6px 1.6px rgba(255, 255, 255, 0.35),
+    0 3.2px 8px rgba(37, 22, 13, 0.25);
 }
+
 .verify-btn:hover {
   transform: translateY(-1.6px);
   filter: brightness(1.05);
@@ -1579,6 +1594,7 @@ input:focus-visible {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .verification-message {
   display: inline-block;
 
@@ -1591,6 +1607,7 @@ input:focus-visible {
 
   text-align: center;
 }
+
 .verification-message.success {
   background: #eafaf1;
   color: #1e8449;
@@ -1602,6 +1619,7 @@ input:focus-visible {
   color: #c0392b;
   border: 0.8px solid #e74c3c;
 }
+
 .verification-section {
   display: flex;
   flex-direction: column;
@@ -1633,6 +1651,7 @@ input:focus-visible {
   text-align: center;
   color: #1f3b5c;
 }
+
 .calc-row {
   display: flex;
   align-items: center;
@@ -1662,6 +1681,7 @@ input:focus-visible {
   font-weight: 700;
 
 }
+
 .fill-blank {
   display: inline-block;
   min-width: 96px;
@@ -1682,6 +1702,7 @@ input:focus-visible {
   gap: 9.6px;
   margin-bottom: 11.2px;
 }
+
 .fill-blank-input {
   width: 144px;
 
@@ -1712,6 +1733,7 @@ input:focus-visible {
   color: #999;
   font-weight: 500;
 }
+
 .action-step {
   border-left: 3.2px solid transparent;
   border-radius: 4.8px;
@@ -1770,14 +1792,13 @@ input:focus-visible {
 
   border-radius: 9.6px;
 
-  background: linear-gradient(
-    180deg,
-    #f7f9fb,
-    #edf2f7
-  );
+  background: linear-gradient(180deg,
+      #f7f9fb,
+      #edf2f7);
 
   border: 0.8px solid #d4dce4;
 }
+
 .results-section {
   display: flex;
   gap: 16px;
@@ -1808,6 +1829,7 @@ input:focus-visible {
 .result-value span {
   margin-left: 6.4px;
 }
+
 .verification-input {
   width: 100%;
   height: 33.6px;
@@ -1819,6 +1841,7 @@ input:focus-visible {
 
   font-size: 12.8px;
 }
+
 .verify-btn {
   width: 144px;
   height: 40px;
@@ -1828,228 +1851,219 @@ input:focus-visible {
 
   border-radius: 799.2px;
 }
+
 /* =========================
    CALCULATION PANEL
 ========================= */
 
-.calculation-values{
-  display:flex;
-  flex-direction:column;
-  gap:11.2px;
-  margin-bottom:16px;
+.calculation-values {
+  display: flex;
+  flex-direction: column;
+  gap: 11.2px;
+  margin-bottom: 16px;
 }
 
-.calc-field{
-  display:grid;
-  grid-template-columns:208px 1fr;
-  align-items:center;
-  gap:12.8px;
+.calc-field {
+  display: grid;
+  grid-template-columns: 208px 1fr;
+  align-items: center;
+  gap: 12.8px;
 }
 
-.calc-label{
-  font-size:14.4px;
-  font-weight:600;
-  color:#2d1d14;
+.calc-label {
+  font-size: 14.4px;
+  font-weight: 600;
+  color: #2d1d14;
 }
 
-.calc-input-group{
-  display:flex;
-  align-items:center;
+.calc-input-group {
+  display: flex;
+  align-items: center;
 }
 
 .calc-prefix,
-.calc-suffix{
-  background:linear-gradient(
-    180deg,
-    #f5ead8,
-    #ddc9ab
-  );
+.calc-suffix {
+  background: linear-gradient(180deg,
+      #f5ead8,
+      #ddc9ab);
 
-  border:0.8px solid rgba(96,61,35,0.28);
+  border: 0.8px solid rgba(96, 61, 35, 0.28);
 
-  color:#4a2b1f;
+  color: #4a2b1f;
 
-  font-weight:800;
+  font-weight: 800;
 }
 
-.calc-prefix{
-  border-radius:6.4px 0 0 6.4px;
+.calc-prefix {
+  border-radius: 6.4px 0 0 6.4px;
 }
 
-.calc-suffix{
-  border-radius:0 6.4px 6.4px 0;
+.calc-suffix {
+  border-radius: 0 6.4px 6.4px 0;
 }
 
-.calc-display{
-  flex:1;
+.calc-display {
+  flex: 1;
 
-  height:33.6px;
+  height: 33.6px;
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 
-  padding:0 11.2px;
+  padding: 0 11.2px;
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,252,246,0.98),
-      rgba(241,232,216,0.98)
-    );
+    linear-gradient(180deg,
+      rgba(255, 252, 246, 0.98),
+      rgba(241, 232, 216, 0.98));
 
-  border-top:0.8px solid rgba(96,61,35,0.24);
-  border-bottom:0.8px solid rgba(96,61,35,0.24);
+  border-top: 0.8px solid rgba(96, 61, 35, 0.24);
+  border-bottom: 0.8px solid rgba(96, 61, 35, 0.24);
 
-  color:#3e2a1f;
-  font-weight:700;
+  color: #3e2a1f;
+  font-weight: 700;
 
-  font-size:14.4px;
+  font-size: 14.4px;
 
 }
 
-.formula-heading{
-  margin-top:8px;
-  margin-bottom:8px;
+.formula-heading {
+  margin-top: 8px;
+  margin-bottom: 8px;
 
-  font-size:16px;
-  font-weight:800;
+  font-size: 16px;
+  font-weight: 800;
 }
 
-.formula-panel{
-  margin-bottom:19.2px;
+.formula-panel {
+  margin-bottom: 19.2px;
 
-  padding:19.2px;
+  padding: 19.2px;
 
-  text-align:center;
+  text-align: center;
 
-  border-radius:11.2px;
+  border-radius: 11.2px;
 
-  border:0.8px solid rgba(126,88,52,0.22);
+  border: 0.8px solid rgba(126, 88, 52, 0.22);
 
   background:
-    linear-gradient(
-      180deg,
-      rgba(255,252,246,0.98),
-      rgba(241,232,216,0.98)
-    );
+    linear-gradient(180deg,
+      rgba(255, 252, 246, 0.98),
+      rgba(241, 232, 216, 0.98));
 
-  color:#3d2416;
+  color: #3d2416;
 
-  font-size:20.8px;
-  font-weight:800;
+  font-size: 20.8px;
+  font-weight: 800;
 
   box-shadow:
-    inset 0 0.8px 0 rgba(255,255,255,0.9),
-    0 3.2px 8px rgba(60,32,10,0.08);
+    inset 0 0.8px 0 rgba(255, 255, 255, 0.9),
+    0 3.2px 8px rgba(60, 32, 10, 0.08);
 }
 
-.results-section{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14.4px;
+.results-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14.4px;
 
-  margin-bottom:17.6px;
+  margin-bottom: 17.6px;
 }
 
-.result-card{
- 
-  border-radius:9.6px;
-background:
-    linear-gradient(
-      180deg,
-      rgba(255,252,247,0.98),
-      rgba(247,239,227,0.98)
-    );
+.result-card {
 
-  border:0.8px solid rgba(126,88,52,0.22);
+  border-radius: 9.6px;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 252, 247, 0.98),
+      rgba(247, 239, 227, 0.98));
+
+  border: 0.8px solid rgba(126, 88, 52, 0.22);
 
   box-shadow:
-    inset 0 0.8px 0 rgba(255,255,255,0.9);
-  padding:14.4px;
+    inset 0 0.8px 0 rgba(255, 255, 255, 0.9);
+  padding: 14.4px;
 }
 
-.result-card legend{
-  padding:0 8px;
+.result-card legend {
+  padding: 0 8px;
 
-  font-size:16px;
-  font-weight:800;
+  font-size: 16px;
+  font-weight: 800;
 
-  color:#4a2b1f;
+  color: #4a2b1f;
 }
 
-.result-row{
-  display:flex;
-  align-items:center;
-  gap:9.6px;
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 9.6px;
 }
 
-.result-display{
-  min-width:144px;
+.result-display {
+  min-width: 144px;
 
-  padding:8px 11.2px;
+  padding: 8px 11.2px;
 
- 
-  border-radius:6.4px;
 
- background:
-    linear-gradient(
-      180deg,
+  border-radius: 6.4px;
+
+  background:
+    linear-gradient(180deg,
       #fffaf2,
-      #f0e3d0
-    );
+      #f0e3d0);
 
-    color:#3e2a1f;
+  color: #3e2a1f;
 
-  border:0.8px solid rgba(126,88,52,0.22);
+  border: 0.8px solid rgba(126, 88, 52, 0.22);
 
-  font-weight:600;
+  font-weight: 600;
 }
 
-.result-unit{
+.result-unit {
   position: relative;
   right: 160px;
-  font-size:17.6px;
-  font-weight:700;
+  font-size: 17.6px;
+  font-weight: 700;
 }
 
-.verification-input{
-  width:100%;
-  height:33.6px;
+.verification-input {
+  width: 100%;
+  height: 33.6px;
 
-   background:
-    linear-gradient(
-      180deg,
+  background:
+    linear-gradient(180deg,
       #fffaf2,
-      #f0e3d0
-    );
+      #f0e3d0);
 
-  border:0.8px solid rgba(126,88,52,0.25);
+  border: 0.8px solid rgba(126, 88, 52, 0.25);
 
-  color:#3e2a1f;
+  color: #3e2a1f;
 }
-.verification-input:focus{
-  outline:none;
 
-  border-color:#b9833c;
+.verification-input:focus {
+  outline: none;
+
+  border-color: #b9833c;
 
   box-shadow:
-    0 0 0 2.4px rgba(185,131,60,0.15);
+    0 0 0 2.4px rgba(185, 131, 60, 0.15);
 }
 
-.verification-section{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:9.6px;
+.verification-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9.6px;
 }
-.result-label{
-  font-size:13.6px;
-  font-weight:570;
 
-  color:#3b2417;
+.result-label {
+  font-size: 13.6px;
+  font-weight: 570;
+
+  color: #3b2417;
 
   text-shadow:
-    0 0.8px 0 rgba(255,255,255,0.6);
+    0 0.8px 0 rgba(255, 255, 255, 0.6);
 }
 
 .report-controls {
@@ -2062,6 +2076,7 @@ background:
   justify-content: center;
   gap: 9.6px;
 }
+
 .formula-button {
   display: inline-flex;
   min-width: 105.6px;
@@ -2075,19 +2090,17 @@ background:
 
   color: #4f321d;
 
-  background: linear-gradient(
-    180deg,
-    #ffe7a8,
-    #efae3f
-  );
+  background: linear-gradient(180deg,
+      #ffe7a8,
+      #efae3f);
 
   font-weight: 900;
   cursor: pointer;
 
   box-shadow:
-    inset 0 1.6px 1.6px rgba(255,255,255,.42),
-    inset 0 -6.4px 10.4px rgba(0,0,0,.2),
-    0 3.2px 5.6px rgba(37,22,13,.42);
+    inset 0 1.6px 1.6px rgba(255, 255, 255, .42),
+    inset 0 -6.4px 10.4px rgba(0, 0, 0, .2),
+    0 3.2px 5.6px rgba(37, 22, 13, .42);
 }
 
 .formula-button svg {
@@ -2104,14 +2117,14 @@ background:
 
   padding: 11.2px;
 
-  border: 1.6px solid rgba(89,55,30,.35);
+  border: 1.6px solid rgba(89, 55, 30, .35);
   border-radius: 6.4px;
 
   background: #fff8ea;
 
   box-shadow:
-    inset 0 0.8px 0 rgba(255,255,255,.75),
-    0 11.2px 19.2px rgba(50,30,17,.28);
+    inset 0 0.8px 0 rgba(255, 255, 255, .75),
+    0 11.2px 19.2px rgba(50, 30, 17, .28);
 
   z-index: 50;
 }
@@ -2139,10 +2152,10 @@ background:
 
   padding: 7.2px 8px;
 
-  border: 0.8px solid rgba(106,74,43,.22);
+  border: 0.8px solid rgba(106, 74, 43, .22);
   border-radius: 6.4px;
 
-  background: rgba(255,255,255,.58);
+  background: rgba(255, 255, 255, .58);
 }
 
 .floating-formula-panel__item dt {
@@ -2186,7 +2199,7 @@ background:
 
   border-radius: 5.6px;
 
-  background: rgba(63,143,67,.12);
+  background: rgba(63, 143, 67, .12);
 
   color: #274f2c;
 
@@ -3068,7 +3081,7 @@ background:
   font-size: 20px;
 }
 
-.fill-factor-definition > span:first-child {
+.fill-factor-definition>span:first-child {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15.2px;
   font-weight: 850;
@@ -3081,7 +3094,7 @@ background:
   text-align: center;
 }
 
-.fill-factor-fraction > span:first-child {
+.fill-factor-fraction>span:first-child {
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -3090,7 +3103,7 @@ background:
   border-bottom: 1.6px solid #4a3021;
 }
 
-.fill-factor-fraction > span:last-child {
+.fill-factor-fraction>span:last-child {
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -3103,8 +3116,8 @@ background:
   font-size: 18.4px;
 }
 
-.fill-factor-fraction--compact > span:first-child,
-.fill-factor-fraction--compact > span:last-child {
+.fill-factor-fraction--compact>span:first-child,
+.fill-factor-fraction--compact>span:last-child {
   min-height: 31.2px;
 }
 
@@ -3183,7 +3196,7 @@ background:
   font-weight: 850;
 }
 
-.maximum-power-values-card__section + .maximum-power-values-card__section {
+.maximum-power-values-card__section+.maximum-power-values-card__section {
   padding-top: 9.6px;
   border-top: 0.8px solid rgba(125, 86, 49, 0.2);
 }
@@ -3199,7 +3212,7 @@ background:
   margin-top: 0;
 }
 
-.maximum-power-values-card__source > div {
+.maximum-power-values-card__source>div {
   width: max-content;
 }
 
@@ -3394,6 +3407,7 @@ background:
 }
 
 @media print {
+
   *,
   *::before,
   *::after {
@@ -3650,6 +3664,7 @@ background:
     page-break-inside: avoid !important;
   }
 }
+
 /* =========================
    FUNCTION GENERATOR
 ========================= */
@@ -3666,7 +3681,7 @@ background:
 .function-generator {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .function-generator__button {
@@ -3703,7 +3718,7 @@ background:
    * text needs tiny positioning changes.
    */
   left: -15px;
-  top: 20%;
+  top: 33%;
 
   width: 66%;
 
@@ -3713,7 +3728,7 @@ background:
 
 
   font-family: Arial, sans-serif;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
 
   line-height: 1.4;
@@ -3737,24 +3752,16 @@ background:
 
 .function-generator__frequency-input {
   position: absolute;
-
-  /*
-   * This covers the existing slider
-   * line already present in your PNG.
-   */
   left: 8%;
-  right: 8%;
   bottom: 15%;
-
   width: 84%;
   height: 32px;
 
   margin: 0;
+  padding: 0;
 
   opacity: 0;
-
   cursor: pointer;
-
   z-index: 20;
 }
 
@@ -3762,46 +3769,37 @@ background:
   cursor: not-allowed;
 }
 
+
 /* =========================
    PHYSICAL KNOB
 ========================= */
 
 .function-generator__slider-knob {
   position: absolute;
+  left: 8%;
+  bottom: 12%;
 
-  /*
-   * Center the knob on the existing
-   * slider line.
-   */
-  top: 45%;
-  width: 40px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
 
   object-fit: contain;
-
-  transform: translateX(60%);
+  transform: translateX(10%);
 
   pointer-events: none;
-
   user-select: none;
 
-  z-index: 15;
+  z-index: 100;
 
-  transition:
-    left 80ms linear,
-    opacity 150ms ease;
+  transition: left 80ms linear, opacity 150ms ease;
 }
-/* 
+
 .function-generator__slider-knob--active {
   opacity: 1;
 }
 
 .function-generator__slider-knob--disabled {
   opacity: 0.55;
-} */
-
-
-
+}
 
 
 /* =========================================================
@@ -3932,6 +3930,3 @@ background:
   line-height: 1;
   pointer-events: none;
 }
-
-
-

@@ -62,9 +62,10 @@ const FunctionGenerator = ({
    * 10.0 kHz -> 100%
    */
   const knobPosition =
-    (frequencyIndex /
-      (FREQUENCY_VALUES_KHZ.length - 1)) *
-    100
+  8 +
+  (frequencyIndex /
+    (FREQUENCY_VALUES_KHZ.length - 1)) *
+    84
 
   return (
     <article
