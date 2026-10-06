@@ -1,0 +1,258 @@
+{
+  "guideName": "AI Guide",
+  "defaultLocale": "en",
+  "locales": ["en"],
+  "steps": [
+    {
+      "id": 1,
+      "text": "Hello! I am your AI Guide. I will guide you through each step of the experiment. Please follow the instructions carefully and perform the actions as directed. Before we begin, let us familiarize ourselves with the simulation interface. To start, click on the Start Walkthrough.",
+      "audio": "/audios/AI Guide click.wav"
+    },
+    {
+      "id": 2,
+      "text": "The simulation walkthrough is now complete. You are now ready to perform the experiment.",
+      "audio": "/audios/The simulation walkthrough is now complete. You are now ready to perform the experiment.wav"
+    },
+    {
+      "id": 3,
+      "text": "Now, you may either click the Auto Connect button to make the circuit connections automatically or connect the circuit manually by following the highlighted terminals. Let's begin with the first connection.",
+      "audio": "/audios/Now, you may either click the Auto Connect button.wav"
+    },
+    {
+      "id": 4,
+      "text": "Connect the solar panel, voltmeter, and ammeter to the matching circuit terminals."
+    },
+    {
+      "id": 5,
+      "text": "Connect terminal 1 to terminal 7.",
+      "audio": "#"
+    },
+    {
+      "id": 6,
+      "text": "Connect terminal 2 to terminal 8.",
+      "audio": "#"
+    },
+    {
+      "id": 7,
+      "text": "Continue with the remaining instructed connection pairs.",
+      "audio": "#"
+    },
+    {
+      "id": 8,
+      "text": "All six connections are complete. Click CHECK to verify the circuit.",
+      "audio": "/audios/Guide all complete conn.wav"
+    },
+    {
+      "id": 9,
+      "text": "This connection is wrong.",
+      "audio": "/audios/Wrong connection.wav"
+    },
+    {
+      "id": 10,
+      "text": "Some connections are wrong.",
+      "audio": "/audios/Multiple wrong connections.wav"
+    },
+    {
+      "id": 11,
+      "text": "Autoconnect completed. Now, turn ON the power switch.",
+      "audio": "/audios/1st Autoconnect.wav"
+    },
+    {
+      "id": 12,
+      "text": "Add the short-circuit current reading first, or check the bulb switch is ON.",
+      "audio": "/audios/1st time RL click.wav"
+    },
+    {
+      "id": 13,
+      "text": "Please make the required connections as per the given instructions.",
+      "audio": "/audios/1st time check button click.wav"
+    },
+    {
+      "id": 14,
+      "text": "Connections verified successfully. Now, turn ON the power switch.",
+      "audio": "/audios/After correct connections, check.wav"
+    },
+    {
+      "id": 15,
+      "text": "ISC is recorded. Move RL to 100 ohms and click ADD for the first load reading.",
+      "audio": "#"
+    },
+    {
+      "id": 16,
+      "text": "Record each load reading by moving RL one enabled step and clicking ADD.",
+      "audio": "#"
+    },
+    {
+      "id": 17,
+      "text": "Connect terminal 1 to 7.",
+      "audio": "/audios/Connect the solar panel by click and drag the wire from terminal 1 and drop it on terminal 7..wav"
+    },
+    {
+      "id": 18,
+      "text": "Connect terminal 2 to 8.",
+      "audio": "/audios/Similarly, connect terminal 2 to terminal 8.wav"
+    },
+    {
+      "id": 19,
+      "text": "Connect the voltmeter 3 to 9.",
+      "audio": "/audios/Connect the voltmeter terminal 3 to 9..wav"
+    },
+    {
+      "id": 20,
+      "text": "Connect terminal 4 to terminal 10.",
+      "audio": "/audios/Connect terminal 4 to 10.wav"
+    },
+    {
+      "id": 21,
+      "text": "Click CHECK to verify all six circuit connections.",
+      "audio": "#"
+    },
+    {
+      "id": 22,
+      "text": "Connections verified. Switch ON the circuit and bulb before recording measurements.",
+      "audio": "#"
+    },
+    {
+      "id": 23,
+      "text": "The meter reading is ready. Click ADD to record it in the observation table.",
+      "audio": "#"
+    },
+    {
+      "id": 24,
+      "text": "The reading was added to the observation table.",
+      "audio": "#"
+    },
+    {
+      "id": 25,
+      "text": "Continue recording the remaining load readings.",
+      "audio": "#"
+    },
+    {
+      "id": 26,
+      "text": "Connect the ammeter terminal 5 to terminal 11.",
+      "audio": "/audios/Connect the ammeter terminal 5 to 11.wav"
+    },
+    {
+      "id": 27,
+      "text": "Connect ammeter terminal 6 to terminal 12.",
+      "audio": "/audios/Connect terminal 6 to 12..wav"
+    },
+    {
+      "id": 28,
+      "text": "All load readings are complete. Remove ammeter connections 5 to 11 and 6 to 12.",
+      "audio": "/audios/After the 11th reading.wav"
+    },
+    {
+      "id": 29,
+      "text": "Click CHECK to verify all six circuit connections.",
+      "audio": "#"
+  
+    },
+    
+    {
+      "id": 30,
+      "text": "The ammeter is disconnected. Click ADD to record the open-circuit voltage.",
+      "audio": "#"
+    },
+    {
+      "id": 31,
+      "text": "The open-circuit voltage has been recorded successfully. All required measurements are now complete. Click the PLOT button to plot the V–I characteristics of the solar cell.",
+      "audio": "/audios/VOC added.wav"
+    },
+    {
+      "id": 32,
+      "text": "The V-I characteristic is now plotted. Enter Vmp, Imp, Isc and Voc in the fill factor calculation section, then click the Calculate button to calculate the fill factor.",
+      "audio": "/audios/VI plotted.wav"
+    },
+    {
+      "id": 33,
+      "text": "Incorrect calculations. Please review your calculations and try again.",
+      "audio": "/audios/Calculate button click, Incorrect calculations.wav"
+    },
+    {
+      "id": 34,
+      "text": " Calculations are correct. Now, click on the Generate Report button.",
+      "audio": "/audios/Calculate button click, Correct calculations.wav"
+    },
+    {
+      "id": 35,
+      "text": "The simulation has been reset. You can start again.",
+      "audio": "/audios/Reset.wav"
+    },
+    {
+      "id": 36,
+      "text": "Opening the print dialog.",
+      "audio": "/audios/Print.wav"
+    },
+    {
+      "id": 37,
+      "text": "Your report has been generated successfully. Click OK to view your report.",
+      "audio": "/audios/Generate Report.wav"
+    },
+    {
+      "id": 38,
+      "text": "Connections verified successfully. Switch ON the circuit and bulb.",
+      "audio": "#"
+    },
+    {
+      "id": 39,
+      "text": "Complete the current measurement before changing the circuit connections.",
+      "audio": "#"
+    },
+    {
+      "id": 40,
+      "text": "Please enter the required value, then click the “Calculate” button.",
+      "audio": "/audios/Calculate button click, one value is missing.wav"
+    },
+    {
+      "id": 41,
+      "text": "Please enter all the values, then click the “Calculate” button.",
+      "audio": "/audios/Calculate button click, more than one value is missing.wav"
+    },
+    {
+      "id": 42,
+      "text": "Auto Connect completed all required circuit connections.",
+      "audio": "#"
+    },
+    {
+      "id": 43,
+      "text": "Auto Connect completed all required circuit connections.",
+      "audio": "#"
+    },
+    {
+      "id": 44,
+      "text": "Reading added successfully. Now, vary the load resistance (RL) by moving the resistance slider to take the next reading and then click the Add button.",
+      "audio": "/audios/1st reading added.wav"
+    },
+    {
+      "id": 45,
+      "text": "Now, click the Add button again to record the second reading. ",
+      "audio": "/audios/2nd time RL clickvary.wav"
+    },
+    {
+  "id": 49,
+  "text": "Reading added successfully. Repeat the same process until all eleven readings have been added.",
+  "audio": "/audios/3nd time RL clickvary.wav"
+},
+    {
+      "id": 46,
+      "text": "Record ISC before changing RL. After all load readings are recorded, RL remains locked.",
+      "audio": "#"
+    },
+    {
+      "id": 47,
+      "text": "Power is ON. Now, turn ON the bulb switch.",
+      "audio": "/audios/Power Switch ON.wav"
+    },
+    {
+      "id": 48,
+      "text": "Current is applied and the meter readings are displayed.",
+      "audio": "/audios/After Bulb ON.wav"
+    },
+    {
+      "id": 49,
+      "text": "Reading added successfully. Repeat the same process until all eleven readings have been added.",
+      "audio": "/audios/3nd time RL clickvary.wav"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "experimentName": "Basic Electrical Science Lab",
+  "defaultLocale": "en",
+  "locales": ["en"],
+  "audio": {
+    "autoplay": true,
+    "enabled": true
+  },
+  "steps": [
+{
+  "id": 1,
+  "target": "#experiment-title-board",
+  "title": {
+    "en": "Aim"
+  },
+  "description": {
+    "en": "To study the VI characteristics and fill factor of a Solar Cell."
+  },
+   "audio":"/walkthrough-audios/Aim.wav",
+  "placement": "bottom"
+},{
+  "id": 2,
+  "target": "#instruction-button",
+  "title": {
+    "en": "Instructions Button"
+  },
+  "description": {
+    "en": "The Instructions provide step-by-step guidance on how to perform the simulation."
+  },
+  "audio": "/walkthrough-audios/Instructions Button.wav",
+  "placement": "right"
+},{
+  "id": 3,
+  "target": "#ai-guide-button",
+  "title": {
+    "en": "AI Guide Button"
+  },
+  "description": {
+    "en": "The AI guide will assist you in performing the simulation accurately at each step."
+  },
+   "audio": "/walkthrough-audios/Ai Guide btn.wav",
+  "placement": "right"
+},{
+  "id": 4,
+  "target": "#auto-connect-button",
+  "title": {
+    "en": "Auto Connect Button"
+  },
+  "description": {
+    "en": "The AUTO CONNECT button makes all the connections automatically."
+  },
+   "audio": "/walkthrough-audios/Auto Connect Button.wav",
+  "placement": "right"
+},
+ {
+  "id": 5,
+  "target": "#check-button",
+  "title": {
+    "en": "Check Button"
+  },
+  "description": {
+    "en": "The CHECK button verifies all the connections to ensure that they are correct.\n\n**Note:** If a wire is connected incorrectly, click the corresponding label number to remove the connection."
+  },
+   "audio": "/walkthrough-audios/Check Button.wav",
+  "placement": "right"
+},
+ {
+  "id": 6,
+  "target": "#add-reading-button",
+  "title": {
+    "en": "Add Button"
+  },
+  "description": {
+    "en": "The ADD button adds the readings to the observation table."
+  },
+   "audio": "/walkthrough-audios/Add Button.wav",
+  "placement": "right"
+},
+{
+  "id": 7,
+  "target": "#plot-button",
+  "title": {
+    "en": "Plot Button"
+  },
+  "description": {
+    "en": "The PLOT button will display the graph of the recorded readings."
+  },
+  "audio": "/walkthrough-audios/Plot Button.wav",
+  "placement": "right"
+},
+{
+  "id": 8,
+  "target": "#reset-button",
+  "title": {
+    "en": "Reset Button"
+  },
+  "description": {
+    "en": "The RESET button refresh the simulation to its initial state for a fresh start."
+  },
+   "audio": "/walkthrough-audios/Reset Button.wav",
+  "placement": "right"
+},{
+  "id": 9,
+  "target": "#print-button",
+  "title": {
+    "en": "Print Button"
+  },
+  "description": {
+    "en": "The PRINT button allows you to print the simulation."
+  },
+   "audio": "/walkthrough-audios/Print Button.wav",
+  "placement": "right"
+},{
+  "id": 10,
+  "target": "#resistance-controls",
+  "title": {
+    "en": "Resistance Slider"
+  },
+  "description": {
+    "en": "For varying the load resistance (RL) by moving the resistance slider. Vary RL gradually and record the corresponding voltage (V) and current (I) values in the observation table.\n\n**Range RL:** 0 - 1000 Ω"
+  },
+   "audio": "/walkthrough-audios/Resistance Slider.wav",
+  "placement": "right"
+},{
+  "id": 11,
+  "target": "#circuit-power-control",
+  "title": {
+    "en": "Power Switch"
+  },
+  "description": {
+    "en": "Use this switch to turn the experimental setup ON/OFF. The power switch controls the power supply to the complete experimental setup.\n\n**Input Supply:** 230 V, 50 Hz"
+  },
+   "audio": "/walkthrough-audios/Power Switch.wav",
+  "placement": "left"
+},{
+  "id": 12,
+  "target": "#solar-bulb-controls",
+  "title": {
+    "en": "Solar Panel"
+  },
+  "description": {
+    "en": "The bulb acts as the light source for the solar panel. Its light is directed onto the solar panel to generate electrical energy, providing the voltage and current required to study the solar cell V–I characteristics.\n\n**Rating:** 2 W, 6 V\n**Bulb:** 100 W"
+  },
+   "audio": "/walkthrough-audios/Solar Panel.wav",
+  "placement": "right"
+},{
+  "id": 13,
+  "target": "#voltmeter-walkthrough-target",
+  "spotlightPadding": 2,
+  "title": {
+    "en": "AC/DC Voltmeter"
+  },
+  "description": {
+    "en": "This voltmeter measures the voltage across the solar cell. For the open-circuit condition, disconnect the ammeter and measure the open-circuit voltage (Voc). The measured voltage is also used to determine the maximum-power point and fill factor.\n\n**Rating:** 0 - 10 V"
+  },
+   "audio": "/walkthrough-audios/ACDC Voltmeter.wav",
+  "placement": "bottom"
+},
+{
+  "id": 14,
+  "target": "#ammeter-walkthrough-target",
+  "spotlightPadding": 2,
+  "title": {
+    "en": "AC/DC Ammeter"
+  },
+  "description": {
+    "en": "This ammeter is used to measure the load current (IL​) flowing through the load resistance (RL​). It must always be connected in series with the load. When RL = 0, the load is short-circuited, and the ammeter measures the short-circuit current (ISC).\n\n**Rating:** 0 - 20 mA"
+  },
+   "audio": "/walkthrough-audios/ACDC Ammeter.wav",
+  "placement": "bottom"
+},
+{
+  "id": 15,
+  "target": "#observation-table-panel",
+  "title": {
+    "en": "Observation Table"
+  },
+  "description": {
+    "en": "This table records the measured open-circuit voltage (VOC)​, short-circuit current (ISC),  Load resistance (RL), Voltage (V), Current (mA) and Power (mW)."
+  },
+   "audio": "/walkthrough-audios/Observation Table.wav",
+  "placement": "right"
+},{
+  "id": 16,
+  "target": "#formula-button",
+  "title": {
+    "en": "Equations"
+  },
+  "description": {
+    "en": "This section displays the formula used to determine the Fill Factor of a solar cell."
+  },
+   "audio": "/walkthrough-audios/Equations.wav",
+  "placement": "top"
+},{
+  "id": 17,
+  "target": "#power-load-graph-panel",
+  "title": {
+    "en": "Graph"
+  },
+  "description": {
+    "en": "This section will display the VI Characteristics of a solar cell."
+  },
+   "audio": "/walkthrough-audios/Graph.wav",
+  "placement": "top"
+},{
+  "id": 18,
+  "target": "#calculation-panel",
+  "title": {
+    "en": "Fill Factor Calculation"
+  },
+  "description": {
+    "en": "This is the fill factor calculation section in which you enter the required values to calculate the fill factor of a solar cell."
+  },
+   "audio": "/walkthrough-audios/Fill Factor Calculation.wav",
+  "placement": "top"
+},{
+  "id": 19,
+  "target": "#generate-report-button",
+  "title": {
+    "en": "Generate Report"
+  },
+  "description": {
+    "en": " The Report button generates a summarised report of the simulation. After completing the observation table, graph and theoretical calculations, generate the report. The report will include the time taken to complete the simulation, the apparatus used, recorded readings, graph, user-calculated result, and the conclusion."
+  },
+   "audio": "/walkthrough-audios/Generate Report.wav",
+  "placement": "top"
+}
+  ]
+}
