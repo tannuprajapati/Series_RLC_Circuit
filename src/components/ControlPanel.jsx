@@ -1,3 +1,4 @@
+
 import ObservationTable from './ObservationTable.jsx'
 import ReportControls from './ReportControls.jsx'
 
@@ -6,6 +7,7 @@ const ControlPanel = ({
 
   calculationUnlocked = false,
   calculationVerified = false,
+  calculationDone = false,
 
   onGenerateReport,
   reportGenerated,
@@ -13,7 +15,7 @@ const ControlPanel = ({
   <>
     {/* =========================
         OBSERVATION TABLE
-        Maximum = 8 readings
+        Maximum = 10 readings
     ========================= */}
 
     <ObservationTable
@@ -29,6 +31,7 @@ const ControlPanel = ({
       reportGenerated={reportGenerated}
       calculationUnlocked={calculationUnlocked}
       calculationVerified={calculationVerified}
+      calculationDone={calculationDone}
     />
   </>
 )

@@ -2,16 +2,13 @@ export const POSITIVE_TERMINALS = [
   '1-endpoint',
   '3-endpoint',
   '5-endpoint',
-  '13-endpoint',
-  '15-endpoint',
 ]
 
 export const NEGATIVE_TERMINALS = [
   '2-endpoint',
   '4-endpoint',
   '6-endpoint',
-  '14-endpoint',
-  '16-endpoint',
+
 ]
 
 export const CIRCUIT_POSITIVE_TERMINALS = [
@@ -29,29 +26,24 @@ export const CIRCUIT_NEGATIVE_TERMINALS = [
 /*
  * REQUIRED RLC SERIES RESONANCE CONNECTIONS
  *
- * 1.  1 -> 13
- * 2.  2 -> 14
- * 3.  3 -> 15
- * 4.  4 -> 16
- * 5.  5 -> 15
+ * 1.  1 -> 3
+ * 2.  2 -> 4
+ * 3.  
+ * 4.  5 -> 1
+ * 5.  
  * 6.  6 -> 7
  * 7.  8 -> 11
  * 8.  9 -> 12
- * 9.  10 -> 16
+ * 9.  10 -> 2
  */
 export const REQUIRED_CONNECTION_PAIRS = [
-  ['1-endpoint', '13-endpoint'],
-  ['2-endpoint', '14-endpoint'],
-
-  ['3-endpoint', '15-endpoint'],
-  ['4-endpoint', '16-endpoint'],
-
-  ['5-endpoint', '15-endpoint'],
+  ['1-endpoint', '3-endpoint'],
+  ['1-endpoint', '5-endpoint'],
+  ['2-endpoint', '4-endpoint'],
   ['6-endpoint', '7-endpoint'],
   ['8-endpoint', '11-endpoint'],
-
-  ['9-endpoint', '12-endpoint'],
-  ['10-endpoint', '16-endpoint'],
+  ['12-endpoint', '9-endpoint'],
+  ['10-endpoint', '2-endpoint'],
 ]
 
 export const resolveJsPlumb = (module) => (
@@ -393,8 +385,8 @@ export const addTerminalEndpoint = (
        * Each accepts two connections.
        */
       maxConnections:
-        terminalId === '15-endpoint' ||
-        terminalId === '16-endpoint'
+        terminalId === '1-endpoint' ||
+        terminalId === '2-endpoint'
           ? 2
           : 1,
 

@@ -332,14 +332,14 @@
 */
 .connection-lab .jtk-endpoint--terminal-1,
 .connection-terminal--endpoint-1 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 32px;
+  --jtk-endpoint-offset-x: -25px;
+  --jtk-endpoint-offset-y: 3px;
+  --terminal-size: 30px;
 }
 
 .connection-terminal--endpoint-1 {
-  --terminal-base-top: 142px;
-  --terminal-base-left: 41px;
+  --terminal-base-top: 125px;
+  --terminal-base-left: 210px;
 }
 
 
@@ -347,18 +347,18 @@
 .connection-terminal--endpoint-2 {
   --jtk-endpoint-offset-x: -5.6px;
   --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 32px;
+  --terminal-size: 30px;
 }
 
 .connection-terminal--endpoint-2 {
-  --terminal-base-top: 138px;
-  --terminal-base-left: 91px;
+  --terminal-base-top: 137px;
+  --terminal-base-left: 225px;
 }
 
 .connection-lab .jtk-endpoint--terminal-3,
 .connection-terminal--endpoint-3 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
+  --jtk-endpoint-offset-x: -2.5px;
+  --jtk-endpoint-offset-y: -9px;
   --terminal-size: 32px;
 }
 
@@ -369,8 +369,8 @@
 
 .connection-lab .jtk-endpoint--terminal-4,
 .connection-terminal--endpoint-4 {
-  --jtk-endpoint-offset-x: -4.8px;
-  --jtk-endpoint-offset-y: -9.6px;
+  --jtk-endpoint-offset-x: -7px;
+  --jtk-endpoint-offset-y: -9px;
   --terminal-size: 32px;
 }
 
@@ -382,18 +382,18 @@
 .connection-lab .jtk-endpoint--terminal-5,
 .connection-terminal--endpoint-5 {
   --jtk-endpoint-offset-x: -6.4px;
-  --jtk-endpoint-offset-y: -8.8px;
+  --jtk-endpoint-offset-y: -4px;
 }
 
 .connection-terminal--endpoint-5 {
   --terminal-base-top: 180.6px;
-  --terminal-base-left: 53px;
+  --terminal-base-left: 54px;
 }
 
 .connection-lab .jtk-endpoint--terminal-6,
 .connection-terminal--endpoint-6 {
   --jtk-endpoint-offset-x: -24px;
-  --jtk-endpoint-offset-y: -9.2px;
+  --jtk-endpoint-offset-y: -4px;
 }
 
 .connection-terminal--endpoint-6 {
@@ -506,57 +506,6 @@
    16 = BLACK / MINUS
 ========================================= */
 
-.connection-lab .jtk-endpoint--terminal-13,
-.connection-terminal--endpoint-13 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 25px;
-}
-
-.connection-terminal--endpoint-13 {
-  --terminal-base-top: 119px;
-  --terminal-base-left: 120px;
-}
-
-
-.connection-lab .jtk-endpoint--terminal-14,
-.connection-terminal--endpoint-14 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 25px;
-}
-
-.connection-terminal--endpoint-14 {
-  --terminal-base-top: 119px;
-  --terminal-base-left: 150px;
-}
-
-
-.connection-lab .jtk-endpoint--terminal-15,
-.connection-terminal--endpoint-15 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 25px;
-}
-
-.connection-terminal--endpoint-15 {
-  --terminal-base-top: 119px;
-  --terminal-base-left: 178px;
-}
-
-
-.connection-lab .jtk-endpoint--terminal-16,
-.connection-terminal--endpoint-16 {
-  --jtk-endpoint-offset-x: -5.6px;
-  --jtk-endpoint-offset-y: -9.6px;
-  --terminal-size: 25px;
-}
-
-.connection-terminal--endpoint-16 {
-  --terminal-base-top: 119px;
-  --terminal-base-left: 205px;
-}
-
 /*
   Permanent terminal colors, converted from the blue/red reference to red/black.
   Upper circuit terminals are red; lower circuit terminals are black.
@@ -566,9 +515,7 @@
   .connection-terminal--endpoint-5,
   .connection-terminal--endpoint-7,
   .connection-terminal--endpoint-9,
-  .connection-terminal--endpoint-11,
-  .connection-terminal--endpoint-13,
-  .connection-terminal--endpoint-15) {
+  .connection-terminal--endpoint-11) {
   --terminal-neutral: #d72828;
   --terminal-neutral-rgb: 215, 40, 40;
   --terminal-accent: #d72828;
@@ -586,9 +533,7 @@
   .connection-terminal--endpoint-6,
   .connection-terminal--endpoint-8,
   .connection-terminal--endpoint-10,
-  .connection-terminal--endpoint-12,
-  .connection-terminal--endpoint-14,
-  .connection-terminal--endpoint-16) {
+  .connection-terminal--endpoint-12) {
   --terminal-neutral: #151515;
   --terminal-neutral-rgb: 21, 21, 21;
   --terminal-accent: #151515;
@@ -603,13 +548,13 @@
 
 /* Adjust each terminal number label here. */
 .terminal-number-label--endpoint-1 {
-  top: 166px;
-  left: 50px;
+  top: 157px;
+  left: 195px;
 }
 
 .terminal-number-label--endpoint-2 {
-  top: 166px;
-  left: 105px;
+  top: 157px;
+  left: 233px;
 }
 
 .terminal-number-label--endpoint-3 {
@@ -662,25 +607,9 @@
   left: 80px;
 }
 
-.terminal-number-label--endpoint-13 {
-  top: 133px;
-  left: 123px;
-}
 
-.terminal-number-label--endpoint-14 {
-  top: 133px;
-  left: 150px;
-}
 
-.terminal-number-label--endpoint-15 {
-  top: 133px;
-  left: 180px;
-}
 
-.terminal-number-label--endpoint-16 {
-  top: 133px;
-  left: 210px;
-}
 
 .terminal-label {
   position: absolute;

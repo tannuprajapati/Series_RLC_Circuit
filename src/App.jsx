@@ -340,6 +340,13 @@ const App = () => {
     () => Date.now(),
   )
 
+
+
+
+  const [, setShowRth] = useState(false)
+
+  const [, setShowMultimeter] = useState(false)
+
   /* -------------------------------------------------------
      Theoretical resonance frequency
      ------------------------------------------------------- */

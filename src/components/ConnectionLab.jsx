@@ -50,7 +50,7 @@ const ConnectionLab = ({
 
   connectionsVerified = false,
 
-  mcbOn = false,
+  
   generatorOn = false,
 
   /*
@@ -475,21 +475,7 @@ const ConnectionLab = ({
       return
     }
 
-    /*
-     * Once MCB is ON, circuit connections must not be
-     * modified.
-     */
-    if (mcbOn) {
-      onGuideEventRef.current?.({
-        description:
-          'Switch OFF the MCB before removing circuit connections.',
-        target: '#mcb-toggle-button',
-        title: 'Switch OFF the MCB',
-        type: 'MCB_REJECTED',
-      })
-
-      return
-    }
+  
 
     /*
      * Delete every connection attached to the selected
@@ -533,7 +519,7 @@ const ConnectionLab = ({
     lastAutoConnectRequestRef.current =
       autoConnectRequest
 
-    if (mcbOn || generatorOn) {
+    if (generatorOn) {
       onGuideEventRef.current?.({
         type: 'AUTO_CONNECT_REJECTED',
         description:
@@ -577,7 +563,6 @@ const ConnectionLab = ({
     }, 500)
   }, [
     autoConnectRequest,
-    mcbOn,
     generatorOn,
   ])
 
@@ -626,7 +611,7 @@ const ConnectionLab = ({
       ref={containerRef}
     >
       <EquipmentPanel
-        mcbOn={mcbOn}
+       
         generatorOn={generatorOn}
 
         /*

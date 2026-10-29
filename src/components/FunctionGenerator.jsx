@@ -1,6 +1,8 @@
 import functionGeneratorOnImage from '../assets/FunctionGenerator_ON.png'
 import functionGeneratorOffImage from '../assets/FunctionGenerator_OFF.png'
-import noobImage from '../assets/noob.png'
+import knobImage from '../assets/knob.png'
+
+import { useEffect, useRef } from 'react'
 
 import {
   getTerminalConnectedClass,
@@ -10,24 +12,15 @@ import {
 
 const FREQUENCY_VALUES_KHZ = [
   1.0,
-  1.5,
   2.0,
-  2.5,
   3.0,
-  3.5,
   4.0,
-  4.5,
   5.0,
-  5.5,
   6.0,
-  6.5,
   7.0,
-  7.5,
   8.0,
-  8.5,
   9.0,
-  9.5,
-  10.0,
+  10.0
 ]
 
 const FunctionGenerator = ({
@@ -42,30 +35,183 @@ const FunctionGenerator = ({
     ? Number(frequency)
     : 1.0
 
-  const frequencyIndex = Math.min(
-    Math.max(
-      Math.round(
-        (safeFrequency - 1.0) / 0.5,
-      ),
-      0,
-    ),
-    FREQUENCY_VALUES_KHZ.length - 1,
-  )
+  /*
+   * Find the exact frequency index.
+   *
+   * IMPORTANT:
+   * Frequencies are now:
+   * 1, 2, 3, 4, 5, 6, 7, 8 kHz
+   *
+   * Do NOT use the old 0.5 step calculation here.
+   */
+  const foundFrequencyIndex =
+    FREQUENCY_VALUES_KHZ.findIndex(
+      (value) =>
+        Math.abs(value - safeFrequency) < 0.001,
+    )
+
+  const frequencyIndex =
+    foundFrequencyIndex >= 0
+      ? foundFrequencyIndex
+      : 0
 
   const selectedFrequency =
     FREQUENCY_VALUES_KHZ[frequencyIndex]
 
   /*
-   * Percentage used to move the physical knob.
+   * Physical slider position.
    *
-   * 1.0 kHz  -> 0%
-   * 10.0 kHz -> 100%
+   * 1.0 kHz -> 8%
+   * 8.0 kHz -> 75%
+   *
+   * These values match the physical slider track
+   * in the Function Generator image.
    */
+  const SLIDER_START_PERCENT = 8
+  const SLIDER_END_PERCENT = 75
+
   const knobPosition =
-  8 +
-  (frequencyIndex /
-    (FREQUENCY_VALUES_KHZ.length - 1)) *
-    84
+    SLIDER_START_PERCENT +
+    (frequencyIndex /
+      (FREQUENCY_VALUES_KHZ.length - 1)) *
+      (SLIDER_END_PERCENT - SLIDER_START_PERCENT)
+
+  /*
+   * Keep track of the frequency that has actually
+   * been displayed.
+   */
+  const currentFrequencyIndexRef =
+    useRef(frequencyIndex)
+
+  /*
+   * Keep the latest requested target.
+   *
+   * If the user quickly drags:
+   *
+   * 1 -> 8
+   *
+   * the target becomes 8, but the displayed
+   * frequency moves:
+   *
+   * 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
+   */
+  const targetFrequencyIndexRef =
+    useRef(frequencyIndex)
+
+  const frequencyTimerRef =
+    useRef(null)
+
+  /*
+   * Keep the internal index synchronized with
+   * the actual frequency coming from the parent.
+   */
+  useEffect(() => {
+    if (!frequencyTimerRef.current) {
+      currentFrequencyIndexRef.current =
+        frequencyIndex
+
+      targetFrequencyIndexRef.current =
+        frequencyIndex
+    }
+  }, [frequencyIndex])
+
+  /*
+   * Cleanup timer when component is removed.
+   */
+  useEffect(() => {
+    return () => {
+      if (frequencyTimerRef.current) {
+        clearInterval(frequencyTimerRef.current)
+        frequencyTimerRef.current = null
+      }
+    }
+  }, [])
+
+  /*
+   * Move through every frequency one step at a time.
+   */
+  const moveFrequencySequentially = (
+    targetIndex,
+  ) => {
+    const clampedTargetIndex = Math.min(
+      Math.max(targetIndex, 0),
+      FREQUENCY_VALUES_KHZ.length - 1,
+    )
+
+    /*
+     * Always update the latest requested target.
+     */
+    targetFrequencyIndexRef.current =
+      clampedTargetIndex
+
+    /*
+     * Already at target.
+     */
+    if (
+      currentFrequencyIndexRef.current ===
+      clampedTargetIndex
+    ) {
+      return
+    }
+
+    /*
+     * A timer is already moving toward the target.
+     *
+     * We don't create another timer.
+     * The existing timer will read the latest
+     * targetFrequencyIndexRef value.
+     */
+    if (frequencyTimerRef.current) {
+      return
+    }
+
+    frequencyTimerRef.current = setInterval(() => {
+      const currentIndex =
+        currentFrequencyIndexRef.current
+
+      const targetIndex =
+        targetFrequencyIndexRef.current
+
+      /*
+       * Target reached.
+       */
+      if (currentIndex === targetIndex) {
+        clearInterval(
+          frequencyTimerRef.current,
+        )
+
+        frequencyTimerRef.current = null
+
+        return
+      }
+
+      /*
+       * Decide direction.
+       */
+      const direction =
+        targetIndex > currentIndex
+          ? 1
+          : -1
+
+      /*
+       * Move exactly ONE frequency step.
+       */
+      const nextIndex =
+        currentIndex + direction
+
+      currentFrequencyIndexRef.current =
+        nextIndex
+
+      const nextFrequency =
+        FREQUENCY_VALUES_KHZ[nextIndex]
+
+      if (Number.isFinite(nextFrequency)) {
+        onFrequencyChange?.(
+          nextFrequency,
+        )
+      }
+    }, 120)
+  }
 
   return (
     <article
@@ -77,6 +223,7 @@ const FunctionGenerator = ({
           : 'Function Generator is OFF'
       }
     >
+
       {/* =================================
           FUNCTION GENERATOR IMAGE
       ================================= */}
@@ -111,8 +258,6 @@ const FunctionGenerator = ({
 
       {/* =================================
           FREQUENCY DISPLAY
-          Positioned over the existing
-          display area of the image.
       ================================= */}
 
       <div
@@ -124,6 +269,7 @@ const FunctionGenerator = ({
         aria-live="polite"
       >
         Fq ={' '}
+
         {generatorOn
           ? `${selectedFrequency.toFixed(1)} kHz`
           : '0 kHz'}
@@ -131,10 +277,10 @@ const FunctionGenerator = ({
 
       {/* =================================
           INVISIBLE RANGE CONTROL
-          
+
           The actual visible slider line
           already exists inside the PNG.
-          
+
           This input is only the interaction
           layer.
       ================================= */}
@@ -150,20 +296,22 @@ const FunctionGenerator = ({
         disabled={!generatorOn}
         aria-label="Function Generator frequency"
         aria-valuemin="1.0"
-        aria-valuemax="10.0"
+        aria-valuemax="8.0"
         aria-valuenow={selectedFrequency}
         aria-valuetext={`${selectedFrequency.toFixed(1)} kHz`}
-        onChange={(event) => {
-          const index = Number(event.target.value)
-
-          const newFrequency =
-            FREQUENCY_VALUES_KHZ[index]
+        onInput={(event) => {
+          const targetIndex = Number(
+            event.currentTarget.value,
+          )
 
           if (
-            Number.isFinite(newFrequency)
+            Number.isInteger(targetIndex) &&
+            targetIndex >= 0 &&
+            targetIndex <
+              FREQUENCY_VALUES_KHZ.length
           ) {
-            onFrequencyChange?.(
-              newFrequency,
+            moveFrequencySequentially(
+              targetIndex,
             )
           }
         }}
@@ -171,12 +319,12 @@ const FunctionGenerator = ({
 
       {/* =================================
           PHYSICAL SLIDER KNOB
-          
-          This is YOUR noob.png image.
+
+          This is YOUR knob.png image.
       ================================= */}
 
       <img
-        src={noobImage}
+        src={knobImage}
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -194,111 +342,42 @@ const FunctionGenerator = ({
           TERMINAL 13 - RED / PLUS
       ================================= */}
 
-      <span
-        id="13-endpoint"
-        className={`connection-terminal
-          connection-terminal--function-generator
-          connection-terminal--function-generator-13
-          connection-terminal--endpoint-13
-          function-generator-terminal--13
-          ${getTerminalConnectedClass(
-            connectedTerminalIds,
-            '13-endpoint',
-          )}
-          ${getTerminalHighlightClass(
-            highlightedTerminalIds,
-            '13-endpoint',
-          )}`}
-        data-polarity="plus"
-        aria-label="Function Generator positive terminal 13"
-        title="Drag to connect terminal 13"
-      />
-
-      <span
-        className={`terminal-number-label
-          terminal-number-label--endpoint-13
-          ${getTerminalNumberHighlightClass(
-            highlightedTerminalIds,
-            '13-endpoint',
-          )}`}
-        data-terminal-id="13-endpoint"
-        title="Terminal 13. Click to disconnect."
-      >
-        13
-      </span>
-
-      {/* =================================
-          TERMINAL 14 - BLACK / MINUS
-      ================================= */}
-
-      <span
-        id="14-endpoint"
-        className={`connection-terminal
-          connection-terminal--function-generator
-          connection-terminal--function-generator-14
-          connection-terminal--endpoint-14
-          function-generator-terminal--14
-          ${getTerminalConnectedClass(
-            connectedTerminalIds,
-            '14-endpoint',
-          )}
-          ${getTerminalHighlightClass(
-            highlightedTerminalIds,
-            '14-endpoint',
-          )}`}
-        data-polarity="minus"
-        aria-label="Function Generator negative terminal 14"
-        title="Drag to connect terminal 14"
-      />
-
-      <span
-        className={`terminal-number-label
-          terminal-number-label--endpoint-14
-          ${getTerminalNumberHighlightClass(
-            highlightedTerminalIds,
-            '14-endpoint',
-          )}`}
-        data-terminal-id="14-endpoint"
-        title="Terminal 14. Click to disconnect."
-      >
-        14
-      </span>
-
+     
       {/* =================================
           TERMINAL 15 - RED / PLUS
       ================================= */}
 
       <span
-        id="15-endpoint"
+        id="1-endpoint"
         className={`connection-terminal
           connection-terminal--function-generator
-          connection-terminal--function-generator-15
-          connection-terminal--endpoint-15
-          function-generator-terminal--15
+          connection-terminal--function-generator-1
+          connection-terminal--endpoint-1
+          function-generator-terminal--1
           ${getTerminalConnectedClass(
             connectedTerminalIds,
-            '15-endpoint',
+            '1-endpoint',
           )}
           ${getTerminalHighlightClass(
             highlightedTerminalIds,
-            '15-endpoint',
+            '1-endpoint',
           )}`}
         data-polarity="plus"
-        aria-label="Function Generator positive terminal 15"
-        title="Drag to connect terminal 15"
+        aria-label="Function Generator positive terminal 1"
+        title="Drag to connect terminal 1"
       />
 
       <span
         className={`terminal-number-label
-          terminal-number-label--endpoint-15
+          terminal-number-label--endpoint-1
           ${getTerminalNumberHighlightClass(
             highlightedTerminalIds,
-            '15-endpoint',
+            '1-endpoint',
           )}`}
-        data-terminal-id="15-endpoint"
-        title="Terminal 15. Click to disconnect."
+        data-terminal-id="1-endpoint"
+        title="Terminal 1. Click to disconnect."
       >
-        15
+        1
       </span>
 
       {/* =================================
@@ -306,37 +385,38 @@ const FunctionGenerator = ({
       ================================= */}
 
       <span
-        id="16-endpoint"
+        id="2-endpoint"
         className={`connection-terminal
           connection-terminal--function-generator
-          connection-terminal--function-generator-16
-          connection-terminal--endpoint-16
-          function-generator-terminal--16
+          connection-terminal--function-generator-2
+          connection-terminal--endpoint-2
+          function-generator-terminal--2
           ${getTerminalConnectedClass(
             connectedTerminalIds,
-            '16-endpoint',
+            '2-endpoint',
           )}
           ${getTerminalHighlightClass(
             highlightedTerminalIds,
-            '16-endpoint',
+            '2-endpoint',
           )}`}
         data-polarity="minus"
-        aria-label="Function Generator negative terminal 16"
-        title="Drag to connect terminal 16"
+        aria-label="Function Generator negative terminal 2"
+        title="Drag to connect terminal 2"
       />
 
       <span
         className={`terminal-number-label
-          terminal-number-label--endpoint-16
+          terminal-number-label--endpoint-2
           ${getTerminalNumberHighlightClass(
             highlightedTerminalIds,
-            '16-endpoint',
+            '2-endpoint',
           )}`}
-        data-terminal-id="16-endpoint"
-        title="Terminal 16. Click to disconnect."
+        data-terminal-id="2-endpoint"
+        title="Terminal 2. Click to disconnect."
       >
-        16
+        2
       </span>
+
     </article>
   )
 }

@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react'
 import SectionCard from './SectionCard.jsx'
 import {
@@ -74,7 +75,6 @@ const buttons = [
 const instructionOrder = [
   'connections',
   'check-connections',
-  'mcb',
   'function-generator',
   'frequency',
   'add-reading',
@@ -83,6 +83,8 @@ const instructionOrder = [
   'print',
   'reset',
 ]
+
+const MAX_OBSERVATIONS = 10
 
 const ActionButtons = ({
   activeButtons = {},
@@ -162,7 +164,9 @@ const ActionButtons = ({
   return (
     <SectionCard
       className={`action-buttons-card h-[160px] ${
-        instructionsOpen ? 'action-buttons-card--instructions-open' : ''
+        instructionsOpen
+          ? 'action-buttons-card--instructions-open'
+          : ''
       }`}
       icon="buttons"
       id="action-buttons-panel"
@@ -181,11 +185,18 @@ const ActionButtons = ({
             const handler = handlers[handlerName]
 
             const isActive =
-              !opensInstructions && Boolean(activeButtons[handlerName])
-
-            const isDisabled =
               !opensInstructions &&
-              (!handler || disabledButtons[handlerName])
+              Boolean(activeButtons[handlerName])
+
+            const existingDisabled =
+              !handler || Boolean(disabledButtons[handlerName])
+
+            const isDisabled = opensInstructions
+              ? false
+              : handlerName === 'onPlot'
+                ? existingDisabled ||
+                  Boolean(disabledButtons.onPlot)
+                : existingDisabled
 
             const buttonProps = opensInstructions
               ? {
@@ -248,93 +259,66 @@ const ActionButtons = ({
             ref={instructionsBodyRef}
           >
             <ol className="action-instructions-panel__steps">
-
               <li {...getInstructionProps('connections')}>
                 <strong>Step 1:</strong> Make connections as per the
                 instructions given below:
-                <br />
-                <br />
-
-                <strong>(a)</strong> (1-13), (2-14)
-                <br />
-                <br />
-
-                <strong>(b)</strong> (3-15), (4-16)
-                <br />
-                <br />
-
-                <strong>(c)</strong> (5-15), (6-7), (8-11)
-                <br />
-                <br />
-
-                <strong>(d)</strong> (9-12), (10-16)
+                <br /><br />
+                <strong>(a)</strong> (1-3), (2-4)
+                <br /><br />
+                <strong>(b)</strong> (5-1), (6-7)
+                <br /><br />
+                <strong>(c)</strong> (8-11)
+                <br /><br />
+                <strong>(d)</strong> (9-12), (10-2)
               </li>
 
               <li {...getInstructionProps('check-connections')}>
                 <strong>Step 2:</strong>
                 <br />
-                <strong>(a)</strong> Now, Check the connections by
+                 Now, check the connections by
                 clicking on <strong>‘CHECK’</strong> button.
                 <br />
-                <br />
-
-                <strong>(b)</strong> If the connections are
-                <strong> ‘Invalid connections’</strong>, click on
-                corresponding node to remove the connection.
-                <br />
-                <br />
-
-                <strong>(c)</strong> And if the connections are
-                <strong> ‘Right Connections’</strong> then follow the
-                below steps.
-              </li>
-
-              <li {...getInstructionProps('mcb')}>
-                <strong>Step 3:</strong> Turn on the MCB.
+              
               </li>
 
               <li {...getInstructionProps('function-generator')}>
-                <strong>Step 4:</strong> Click on Function Generator
+                <strong>Step 3:</strong> Click on Function Generator
                 <strong> ‘Power’</strong> button.
               </li>
 
               <li {...getInstructionProps('frequency')}>
-                <strong>Step 5:</strong> Now, Vary the frequency by
+                <strong>Step 4:</strong> Vary the frequency by
                 moving the slider.
               </li>
 
               <li {...getInstructionProps('add-reading')}>
-                <strong>Step 6:</strong> Now, Click on
-                <strong> ‘ADD’</strong> button to add the readings in
-                the observation table.
+                <strong>Step 5:</strong> Click on
+                <strong> ‘ADD’</strong> to add the reading to the
+                observation table.
               </li>
 
               <li {...getInstructionProps('repeat-readings')}>
-                <strong>Step 7:</strong> Repeat Step 5 to Step 6 until
-                we get the 8th reading in the observation table.
+                <strong>Step 6:</strong> Repeat Steps 4 and 5 until all
+                <strong> 10 readings </strong>
+                have been added to the observation table.
               </li>
 
               <li {...getInstructionProps('calculation')}>
-                <strong>Step 8:</strong> In Calculation section, We
-                have to manually calculate the
-                <strong> Resonance frequency</strong> and
-                <strong> Quality factor</strong> by using the
-                formulaes in the <strong>"FORMULA tab"</strong> and
-                verify the values with the help of
-                <strong> Verify</strong> button.
+                <strong>Step 7:</strong> Review the calculated
+                resonance frequency and quality factor, click
+                <strong> Verify</strong>, and then click
+                <strong> PLOT</strong> to display Curve 1.
               </li>
 
               <li {...getInstructionProps('print')}>
-                <strong>Step 9:</strong> Click on
-                <strong> ‘PRINT’</strong> button to takeout the print
-                of the webpage.
+                <strong>Step 8:</strong> Click
+                <strong> ‘PRINT’</strong> to print the webpage.
               </li>
 
               <li {...getInstructionProps('reset')}>
-                <strong>Step 10:</strong> Click on
-                <strong> ‘RESET’</strong> button to reload the webpage.
+                <strong>Step 9:</strong> Click
+                <strong> ‘RESET’</strong> to restart the experiment.
               </li>
-
             </ol>
           </div>
         </div>

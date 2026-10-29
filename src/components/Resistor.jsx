@@ -1,4 +1,6 @@
+
 import resistorImage from '../assets/Resistor.png'
+import resistorConnectedImage from '../assets/resistor1.png'
 
 import {
   getTerminalConnectedClass,
@@ -10,6 +12,17 @@ const Resistor = ({
   connectedTerminalIds = [],
   highlightedTerminalIds = [],
 }) => {
+  const resistorConnected = [
+    '7-endpoint',
+    '8-endpoint',
+  ].every((terminalId) =>
+    connectedTerminalIds.includes(terminalId)
+  )
+
+  const currentResistorImage = resistorConnected
+    ? resistorConnectedImage
+    : resistorImage
+
   return (
     <article
       className="resistor"
@@ -18,16 +31,13 @@ const Resistor = ({
     >
       {/* Resistor Image */}
       <img
-        src={resistorImage}
+        src={currentResistorImage}
         alt="Resistor"
         className="resistor__image"
         draggable="false"
       />
 
-      {/* =========================
-          TERMINAL 7 - RED / PLUS
-      ========================= */}
-
+      {/* TERMINAL 7 - RED / PLUS */}
       <span
         id="7-endpoint"
         className={`connection-terminal
@@ -60,10 +70,7 @@ const Resistor = ({
         7
       </span>
 
-      {/* =========================
-          TERMINAL 8 - BLACK / MINUS
-      ========================= */}
-
+      {/* TERMINAL 8 - BLACK / MINUS */}
       <span
         id="8-endpoint"
         className={`connection-terminal

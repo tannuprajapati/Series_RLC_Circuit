@@ -8,7 +8,7 @@ import {
 import { getMeterNeedleAngle } from '../utils/meterScale.js'
 
 // Match the 0-10 V scale printed on the voltmeter artwork.
-const METER_MAX_VOLTAGE = 10
+const METER_MAX_VOLTAGE = 120
 
 const Voltmeter = ({
 

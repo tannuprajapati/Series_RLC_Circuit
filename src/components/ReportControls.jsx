@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { FormulaIcon, PdfIcon } from './Icons.jsx'
 
@@ -32,20 +33,14 @@ const QualityFactorFormula = () => (
     aria-label="Quality factor equals one divided by R multiplied by square root of L divided by C"
     className="floating-formula-panel__equation-row"
   >
-    <span className="floating-formula-panel__symbol">
-      Q
-    </span>
+    <span className="floating-formula-panel__symbol">Q</span>
 
     <span aria-hidden="true">=</span>
 
-    <span
-      className="floating-formula-panel__fraction"
-      aria-hidden="true"
-    >
+    <span className="floating-formula-panel__fraction">
       <span className="floating-formula-panel__numerator">
         1
       </span>
-
       <span className="floating-formula-panel__denominator">
         R
       </span>
@@ -63,14 +58,13 @@ const QualityFactorFormula = () => (
 const ReportControls = ({
   onGenerateReport,
   reportGenerated,
-  theoremVerified,
+  calculationVerified = false,
+  calculationDone = false,
 }) => {
   const [formulasOpen, setFormulasOpen] = useState(false)
 
   return (
     <div className="report-controls">
-
-      {/* FORMULA POPUP */}
       {formulasOpen && (
         <aside
           aria-labelledby="formula-panel-title"
@@ -80,9 +74,7 @@ const ReportControls = ({
           role="dialog"
         >
           <div className="floating-formula-panel__header">
-            <h3 id="formula-panel-title">
-              FORMULA
-            </h3>
+            <h3 id="formula-panel-title">FORMULA</h3>
 
             <button
               aria-label="Close formula panel"
@@ -95,12 +87,8 @@ const ReportControls = ({
           </div>
 
           <div className="floating-formula-panel__content">
-
-            {/* Resonance Frequency */}
             <section className="floating-formula-panel__section">
-              <h4>
-                Resonance Frequency
-              </h4>
+              <h4>Resonance Frequency</h4>
 
               <p className="floating-formula-panel__description">
                 The resonance frequency of a series RLC circuit
@@ -112,16 +100,12 @@ const ReportControls = ({
                 <strong className="floating-formula-panel__formula-label">
                   Formula
                 </strong>
-
                 <ResonanceFrequencyFormula />
               </div>
             </section>
 
-            {/* Quality Factor */}
             <section className="floating-formula-panel__section">
-              <h4>
-                Quality Factor
-              </h4>
+              <h4>Quality Factor</h4>
 
               <p className="floating-formula-panel__description">
                 The quality factor represents the sharpness of
@@ -132,86 +116,49 @@ const ReportControls = ({
                 <strong className="floating-formula-panel__formula-label">
                   Formula
                 </strong>
-
                 <QualityFactorFormula />
               </div>
             </section>
 
-            {/* Symbols */}
             <section className="floating-formula-panel__section">
-              <h4>
-                Symbols
-              </h4>
+              <h4>Symbols</h4>
 
               <div className="floating-formula-panel__description">
-                <p>
-                  <strong>
-                    f<sub>r</sub>
-                  </strong>{' '}
-                  = Resonance frequency
-                </p>
-
-                <p>
-                  <strong>R</strong>{' '}
-                  = Resistance
-                </p>
-
-                <p>
-                  <strong>L</strong>{' '}
-                  = Inductance
-                </p>
-
-                <p>
-                  <strong>C</strong>{' '}
-                  = Capacitance
-                </p>
-
-                <p>
-                  <strong>Q</strong>{' '}
-                  = Quality factor
-                </p>
+                <p><strong>f<sub>r</sub></strong> = Resonance frequency</p>
+                <p><strong>R</strong> = Resistance</p>
+                <p><strong>L</strong> = Inductance</p>
+                <p><strong>C</strong> = Capacitance</p>
+                <p><strong>Q</strong> = Quality factor</p>
               </div>
             </section>
-
           </div>
         </aside>
       )}
 
-      {/* GENERATE REPORT BUTTON */}
       <button
         id="generate-report-button"
         type="button"
         className="report-button"
-        disabled={!theoremVerified}
+        disabled={!calculationVerified || !calculationDone}
         aria-label="Generate Report"
-        data-report-generated={
-          reportGenerated ? 'true' : 'false'
-        }
+        data-report-generated={reportGenerated ? 'true' : 'false'}
         onClick={onGenerateReport}
       >
         <PdfIcon />
-        <span>
-          Generate Report
-        </span>
+        <span>Generate Report</span>
       </button>
 
-      {/* FORMULA BUTTON */}
       <button
         id="formula-button"
         type="button"
         className="formula-button"
         aria-controls="equations-panel"
         aria-expanded={formulasOpen}
-        onClick={() =>
-          setFormulasOpen((current) => !current)
-        }
+        onClick={() => setFormulasOpen((current) => !current)}
       >
         <FormulaIcon />
-        <span>
-          Formula
-        </span>
+        <span>Formula</span>
       </button>
-
     </div>
   )
 }
