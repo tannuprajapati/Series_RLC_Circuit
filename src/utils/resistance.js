@@ -1,5 +1,15 @@
+
 export const OHMS_PER_KILOHM = 1000
 
+// Series RLC experiment defaults.
+export const RLC_DEFAULTS = {
+  resistance: 100, // ohms
+  inductance: 12.47e-3, // henries
+  capacitance: 0.22e-6, // farads
+  supplyVoltage: 20, // volts RMS
+}
+
+// Legacy Thevenin configuration retained for compatibility.
 export const LOAD_RESISTANCE_VALUES = [
   0,
   100,
@@ -30,10 +40,11 @@ export const RESISTANCE_SLIDER_CONFIG = {
   },
 }
 
-export const ohmsToKilohms = (value) => Number(value) / OHMS_PER_KILOHM
+export const ohmsToKilohms = (value) =>
+  Number(value) / OHMS_PER_KILOHM
 
-export const kilohmsToOhms = (value) => Number(value) * OHMS_PER_KILOHM
+export const kilohmsToOhms = (value) =>
+  Number(value) * OHMS_PER_KILOHM
 
-export const formatKilohms = (value, fractionDigits = 1) => (
+export const formatKilohms = (value, fractionDigits = 1) =>
   ohmsToKilohms(value).toFixed(fractionDigits)
-)
